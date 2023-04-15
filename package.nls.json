@@ -1,5 +1,7 @@
 {
     "description": "定时提醒，自定义提醒内容和时长",
     "displayName": "定时提醒",
-    "add.custom.prompting": "添加自定义提醒"
+    "add.custom.prompting": "添加定时提醒",
+    "timing.prompting": "定时提醒",
+    "view.all.prompting": "查看所有定时提醒"
 }

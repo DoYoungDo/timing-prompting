@@ -3,7 +3,7 @@
     "name": "timing-prompting",
     "description": "%description%",
     "displayName": "%displayName%",
-    "version": "1.0.1",
+    "version": "1.1.1",
     "engines": {
         "HBuilderX": "^3.2.6"
     },
@@ -13,9 +13,14 @@
     "main": "./dist/extension.js",
     "contributes": {
         "commands": [{
-            "command": "add.custom.prompting",
-            "title": "%add.custom.prompting%"
-        }],
+                "command": "add.custom.prompting",
+                "title": "%add.custom.prompting%"
+            },
+            {
+                "command": "view.all.prompting",
+                "title": "%view.all.prompting%"
+            }
+        ],
         "keybindings": [{
             "command": "add.custom.prompting",
             "key": "Ctrl+Alt+a",
@@ -26,6 +31,16 @@
             "menubar/tool": [{
                     "command": "add.custom.prompting",
                     "group": "ext_settings",
+                    "when": "isMac || isWindows"
+                },
+                {
+                    "id": "timing.prompting",
+                    "title": "%timing.prompting%",
+                    "group": "ext_settings"
+                },
+                {
+                    "command": "view.all.prompting",
+                    "group": "timing.prompting@1",
                     "when": "isMac || isWindows"
                 },
                 {

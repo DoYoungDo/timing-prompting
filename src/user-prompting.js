@@ -7,7 +7,7 @@ const {
 } = require("nanoid");
 const i18n = require("./i18n")
 
-// 全局保存的提醒
+// 全局保存的提醒 key:uuid value:{createTime:number,duration:number,promptingText:string,closeByHand:boolean}
 const g_prompings = new Map();
 // 配置文件路径
 const configPath = path.join(os.homedir(), ".time-prompting-config.json");
@@ -152,10 +152,19 @@ async function addPrompting() {
         // console.log("time", time);
         // 保存到全局
         let id = nanoid();
-        g_prompings.set(id, promptingText);
+        g_prompings.set(id, {
+            createTime: Date.now(),
+            duration: time,
+            promptingText,
+            closeByHand
+        });
 
         // 定时提示
         setTimeout(() => {
+            // 如果已经不存在则不再提醒
+            if (!g_prompings.has(id)) {
+                return;
+            }
             // 判断是否需要手动关闭
             if (closeByHand) {
                 hx.window.showMessageBox({
@@ -174,9 +183,108 @@ async function addPrompting() {
     }
 }
 
+function promptingToListItems() {
+    const items = [];
+    for (let [key, value] of g_prompings) {
+        const columns = [];
+        columns.push({
+            label: value.createTime + ""
+        });
+        columns.push({
+            label: value.duration + ""
+        });
+        columns.push({
+            label: value.promptingText + ""
+        });
+        columns.push({
+            label: value.closeByHand + ""
+        });
+
+        items.push({
+            columns,
+            key
+        });
+    }
+    return items;
+}
+
+/* 查看所有定时提醒 */
+async function viewAllPrompting() {
+    let dialog = null;
+    let items = [];
+
+    function getFormItems(options) {
+        items = promptingToListItems();
+        const dialogTitle = "查看所有定时提醒"
+        const dialogFooter = ""
+        return {
+            title: dialogTitle,
+            footer: dialogFooter,
+            formItems: [{
+                type: "list",
+                name: "promptings",
+                columnStretches: [1, 1, 1, 1],
+                items,
+                value: [0],
+                refreshable: true,
+                multiSelection: true,
+                onRefresh: () => {
+                    if (dialog) {
+                        dialog.updateForm(getFormItems());
+                    }
+                }
+            }]
+        }
+    }
+    const btnCancelText = "取消(&C)"
+    const btnOkText = "确定(&O)"
+
+    const res = await hx.window.showFormDialog({
+        ...getFormItems(),
+        width: 700,
+        height: 550,
+        customButtons: [{
+            text: "停止"
+        }, {
+            text: btnOkText,
+            role: "accept"
+        }],
+        onOpened: async function() {
+            dialog = this;
+        },
+        onChanged: async function(name, value, data) {},
+        validate: async function(formData) {
+            return true;
+        }
+    })
+
+    if (res && res.code === 0 && res.buttonIndex === 0) {
+        const {
+            promptings
+        } = res.result;
+        console.log(res.result)
+        if (promptings.length > 0) {
+            const stopItems = [];
+            for (let index of promptings) {
+                stopItems.push(items[index]);
+            }
+            for (let item of stopItems) {
+                if (g_prompings.has(item.key)) {
+                    g_prompings.delete(item.key);
+                    console.log("stop done", item.key);
+                }
+                else {
+                    console.log("stop failed", item.key);
+                }
+            }
+        }
+    }
+}
+
 //该方法将在插件激活的时候调用
 function activate(context) {
     context.subscriptions.push(hx.commands.registerCommand('add.custom.prompting', addPrompting));
+    context.subscriptions.push(hx.commands.registerCommand('view.all.prompting', viewAllPrompting));
 }
 //该方法将在插件禁用的时候调用（目前是在插件卸载的时候触发）
 function deactivate() {
