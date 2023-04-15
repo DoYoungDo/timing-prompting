@@ -1,3 +1,15 @@
 {
-    "extension.helloWorld": "你好，这是我的第一个插件扩展。"
+    "dialogTitle": "添加定时提醒",
+    "pleaseInputPromptingTextContent": "请输入提醒内容",
+    "customTime": "自定义时间",
+    "pleaseInputCustomTime": "请输入自定义时间,单位分钟",
+    "needCloseByHand": "需要手动关闭",
+    "minute": "分钟",
+    "minutes": "分钟",
+    "btnOkText": "确定(&O)",
+    "btnCancelText": "取消(&C)",
+    "promptingTextCannotBeEmpty": "提醒内容不能为空",
+    "pleaseInputValidTime": "请输入正确的时间，只能输入 正 整数或小数，小数最多保留三位小数点",
+    "promptingTitle": "提醒",
+    "btnOkText1": "确定"
 }

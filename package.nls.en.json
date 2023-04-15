@@ -1,3 +1,5 @@
 {
-	"helloWorld": "Hello World"
+    "description": "Timing Prompting，Customize prompting content and duration",
+    "displayName": "Timing Prompting",
+    "add.custom.prompting": "Add custom prompting"
 }

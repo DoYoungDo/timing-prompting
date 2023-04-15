@@ -1,3 +1,15 @@
 {
-   "extension.helloWorld": "Hello, this is my first plug-in extension."
+    "dialogTitle": "Add Timing Prompting",
+    "pleaseInputPromptingTextContent": "Please input prompting content",
+    "customTime": "Custom duration",
+    "pleaseInputCustomTime": "Please enter a custom duration in minutes",
+    "needCloseByHand": "Set manual shutdown",
+    "minute": "minute",
+    "minutes": "minutes",
+    "btnOkText": "Ok(&O)",
+    "btnCancelText": "Cancel(&C)",
+    "promptingTextCannotBeEmpty": "Prompting content can not be empty",
+    "pleaseInputValidTime": "Please enter the correct time. Only positive integers or decimals can be entered, and decimals can be kept to a maximum of three decimal places",
+    "promptingTitle": "Prompting",
+    "btnOkText1": "Ok"
 }
