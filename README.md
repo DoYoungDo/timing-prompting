@@ -7,7 +7,12 @@
 
 ## 演示
 
+- 创建提醒
 ![](https://mp-b9e71787-b2f3-4676-bbfa-f4c5735dea01.cdn.bspapp.com/cloudstorage/d84c4e27-abab-431a-8b76-e8faf1e5d8bc.gif)
+
+- 查看所有提醒,及选中停止
+
+- ![](https://mp-b9e71787-b2f3-4676-bbfa-f4c5735dea01.cdn.bspapp.com/cloudstorage/d69a0ec9-4fd8-4cd4-9d53-425f20c9323a.gif)
 
 ## 特性
 

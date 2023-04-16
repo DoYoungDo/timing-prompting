@@ -184,20 +184,24 @@ async function addPrompting() {
 }
 
 function promptingToListItems() {
+    const {
+        format
+    } = require('date-fns')
+
     const items = [];
     for (let [key, value] of g_prompings) {
         const columns = [];
         columns.push({
-            label: value.createTime + ""
-        });
-        columns.push({
-            label: value.duration + ""
-        });
-        columns.push({
             label: value.promptingText + ""
         });
         columns.push({
-            label: value.closeByHand + ""
+            label: i18n.createTime + format(value.createTime, 'yyyy-MM-dd hh:mm:ss')
+        });
+        columns.push({
+            label: i18n.setTime + (value.duration / (1000 * 60)) + i18n.minute
+        });
+        columns.push({
+            label: (new Date(value.createTime + value.duration - Date.now()).getTime() / (1000 * 60)).toFixed(3) + i18n.promptingAfter
         });
 
         items.push({
@@ -215,7 +219,7 @@ async function viewAllPrompting() {
 
     function getFormItems(options) {
         items = promptingToListItems();
-        const dialogTitle = "查看所有定时提醒"
+        const dialogTitle = i18n.viewAllPrompting;
         const dialogFooter = ""
         return {
             title: dialogTitle,
@@ -236,15 +240,15 @@ async function viewAllPrompting() {
             }]
         }
     }
-    const btnCancelText = "取消(&C)"
-    const btnOkText = "确定(&O)"
+    const btnCancelText = i18n.btnCancelText;
+    const btnOkText = i18n.btnOkText;
 
     const res = await hx.window.showFormDialog({
         ...getFormItems(),
         width: 700,
         height: 550,
         customButtons: [{
-            text: "停止"
+            text: i18n.stopPrompting
         }, {
             text: btnOkText,
             role: "accept"
@@ -262,22 +266,36 @@ async function viewAllPrompting() {
         const {
             promptings
         } = res.result;
-        console.log(res.result)
         if (promptings.length > 0) {
             const stopItems = [];
             for (let index of promptings) {
                 stopItems.push(items[index]);
             }
+            const successed = [];
+            const failed = [];
             for (let item of stopItems) {
                 if (g_prompings.has(item.key)) {
                     g_prompings.delete(item.key);
-                    console.log("stop done", item.key);
+                    successed.push(item.key);
                 }
                 else {
-                    console.log("stop failed", item.key);
+                    failed.push(item.key);
                 }
             }
+            hx.window.setStatusBarMessage(i18n.stopPromptingTip(successed.length, failed.length), 3000, 'info');
         }
+    }
+}
+
+/* 关闭所有提醒 */
+function closeAllPrompting() {
+    // 如果有则清理，没有则提示添加
+    if (g_prompings.size === 0) {
+        hx.window.setStatusBarMessage(i18n.stillNoPrompting, 3000, 'warn');
+    }
+    else {
+        g_prompings.clear();
+        hx.window.setStatusBarMessage(i18n.stopAllPromptingDone, 3000, 'info');
     }
 }
 
@@ -285,6 +303,7 @@ async function viewAllPrompting() {
 function activate(context) {
     context.subscriptions.push(hx.commands.registerCommand('add.custom.prompting', addPrompting));
     context.subscriptions.push(hx.commands.registerCommand('view.all.prompting', viewAllPrompting));
+    context.subscriptions.push(hx.commands.registerCommand('close.all.prompting', closeAllPrompting));
 }
 //该方法将在插件禁用的时候调用（目前是在插件卸载的时候触发）
 function deactivate() {

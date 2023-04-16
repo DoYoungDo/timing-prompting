@@ -12,23 +12,31 @@
     ],
     "main": "./dist/extension.js",
     "contributes": {
-        "commands": [{
+        "commands": [
+            {
                 "command": "add.custom.prompting",
                 "title": "%add.custom.prompting%"
             },
             {
                 "command": "view.all.prompting",
                 "title": "%view.all.prompting%"
+            },
+            {
+                "command": "close.all.prompting",
+                "title": "%close.all.prompting%"
             }
         ],
-        "keybindings": [{
-            "command": "add.custom.prompting",
-            "key": "Ctrl+Alt+a",
-            "when": "isMac || isWindows",
-            "macosx": "command+Alt+a"
-        }],
+        "keybindings": [
+            {
+                "command": "add.custom.prompting",
+                "key": "Ctrl+Alt+a",
+                "when": "isMac || isWindows",
+                "macosx": "command+Alt+a"
+            }
+        ],
         "menus": {
-            "menubar/tool": [{
+            "menubar/tool": [
+                {
                     "command": "add.custom.prompting",
                     "group": "ext_settings",
                     "when": "isMac || isWindows"
@@ -41,6 +49,11 @@
                 {
                     "command": "view.all.prompting",
                     "group": "timing.prompting@1",
+                    "when": "isMac || isWindows"
+                },
+                {
+                    "command": "close.all.prompting",
+                    "group": "timing.prompting@2",
                     "when": "isMac || isWindows"
                 },
                 {
@@ -64,6 +77,7 @@
         "webpack-nls-plugin": "^1.0.0"
     },
     "dependencies": {
+        "date-fns": "^2.29.3",
         "nanoid": "^4.0.2"
     }
 }

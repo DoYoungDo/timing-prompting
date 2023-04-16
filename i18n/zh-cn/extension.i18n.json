@@ -11,5 +11,14 @@
     "promptingTextCannotBeEmpty": "提醒内容不能为空",
     "pleaseInputValidTime": "请输入正确的时间，只能输入 正 整数或小数，小数最多保留三位小数点",
     "promptingTitle": "提醒",
-    "btnOkText1": "确定"
+    "btnOkText1": "确定",
+    "viewAllPrompting": "查看所有定时提醒",
+    "stopPrompting": "停止提醒",
+    "successedStopPromptingTip": "成功停止{0}个提醒",
+    "failedStopPromptingTip": "，{0}个已经完成提醒，无法停止",
+    "stillNoPrompting": "还没有提醒，快去添加一个吧",
+    "stopAllPromptingDone": "已经停止所有提醒",
+    "createTime": "创建时间：",
+    "setTime": "设置时长：",
+    "promptingAfter": " 分钟后提醒"
 }

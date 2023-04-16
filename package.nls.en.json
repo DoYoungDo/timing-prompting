@@ -2,5 +2,7 @@
     "description": "Timing Prompting，Customize prompting content and duration",
     "displayName": "Timing Prompting",
     "add.custom.prompting": "Add timing prompting",
-    "timing.prompting": "Timing prompting"
+    "timing.prompting": "Timing prompting",
+    "view.all.prompting": "View all prompting",
+    "close.all.prompting": "Close all prompting"
 }

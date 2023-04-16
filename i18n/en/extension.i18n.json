@@ -11,5 +11,14 @@
     "promptingTextCannotBeEmpty": "Prompting content can not be empty",
     "pleaseInputValidTime": "Please enter the correct time. Only positive integers or decimals can be entered, and decimals can be kept to a maximum of three decimal places",
     "promptingTitle": "Prompting",
-    "btnOkText1": "Ok"
+    "btnOkText1": "Ok",
+    "viewAllPrompting": "View all prompting",
+    "stopPrompting": "Stop Prompting",
+    "successedStopPromptingTip": "Successfully stopped {0} prompting",
+    "failedStopPromptingTip": ",{0} completed prompting, unable to stop",
+    "stillNoPrompting": "There is no prompting yet. Go and add one",
+    "stopAllPromptingDone": "All prompting have been stopped",
+    "createTime": "Created on:",
+    "setTime": "Set duration:",
+    "promptingAfter": "prompting in minutes"
 }
