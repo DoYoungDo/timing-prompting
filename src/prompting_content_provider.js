@@ -36,6 +36,9 @@ function getRandomButtoms() {
                     fs.writeFileSync(moyu, res.data);
                     hx.window.showInformationMessage(getImageTag(moyu));
                 })
+                .catch(err=>{
+                    hx.window.setStatusBarMessage('获取摸鱼日历失败...', 2000, 'error');
+                })
         }
         /* ,
         		"来一张写真": () => {
