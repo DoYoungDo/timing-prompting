@@ -4,5 +4,7 @@
     "add.custom.prompting": "添加定时提醒",
     "timing.prompting": "定时提醒",
     "view.all.prompting": "查看所有定时提醒",
-    "close.all.prompting": "停止所有定时提醒"
+    "close.all.prompting": "停止所有定时提醒",
+    "show.moyu.calendar": "查看摸鱼日历",
+    "show.weibo.hot": "查看微博热搜"
 }

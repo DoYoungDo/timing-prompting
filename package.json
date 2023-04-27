@@ -3,7 +3,7 @@
     "name": "timing-prompting",
     "description": "%description%",
     "displayName": "%displayName%",
-    "version": "1.2.2",
+    "version": "1.3.2",
     "engines": {
         "HBuilderX": "^3.2.6"
     },
@@ -12,8 +12,7 @@
     ],
     "main": "./dist/extension.js",
     "contributes": {
-        "commands": [
-            {
+        "commands": [{
                 "command": "add.custom.prompting",
                 "title": "%add.custom.prompting%"
             },
@@ -24,19 +23,24 @@
             {
                 "command": "close.all.prompting",
                 "title": "%close.all.prompting%"
-            }
-        ],
-        "keybindings": [
+            },
             {
-                "command": "add.custom.prompting",
-                "key": "Ctrl+Alt+a",
-                "when": "isMac || isWindows",
-                "macosx": "command+Alt+a"
+                "command": "show.moyu.calendar",
+                "title": "%show.moyu.calendar%"
+            },
+            {
+                "command": "show.weibo.hot",
+                "title": "%show.weibo.hot%"
             }
         ],
+        "keybindings": [{
+            "command": "add.custom.prompting",
+            "key": "Ctrl+Alt+a",
+            "when": "isMac || isWindows",
+            "macosx": "command+Alt+a"
+        }],
         "menus": {
-            "menubar/tool": [
-                {
+            "menubar/tool": [{
                     "command": "add.custom.prompting",
                     "group": "ext_settings",
                     "when": "isMac || isWindows"
@@ -54,6 +58,20 @@
                 {
                     "command": "close.all.prompting",
                     "group": "timing.prompting@2",
+                    "when": "isMac || isWindows"
+                },
+                {
+                    "group": "timing.prompting@3",
+                    "when": "isMac || isWindows"
+                },
+                {
+                    "command": "show.moyu.calendar",
+                    "group": "timing.prompting@4",
+                    "when": "isMac || isWindows"
+                },
+                {
+                    "command": "show.weibo.hot",
+                    "group": "timing.prompting@5",
                     "when": "isMac || isWindows"
                 },
                 {

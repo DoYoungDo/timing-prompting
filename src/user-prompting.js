@@ -315,6 +315,14 @@ function activate(context) {
 	context.subscriptions.push(hx.commands.registerCommand('add.custom.prompting', addPrompting));
 	context.subscriptions.push(hx.commands.registerCommand('view.all.prompting', viewAllPrompting));
 	context.subscriptions.push(hx.commands.registerCommand('close.all.prompting', closeAllPrompting));
+	context.subscriptions.push(hx.commands.registerCommand('show.moyu.calendar', ()=>{
+        const provider = require("./prompting_content_provider");
+        provider.showMoyu();
+    }));
+	context.subscriptions.push(hx.commands.registerCommand('show.weibo.hot', ()=>{
+        const provider = require("./prompting_content_provider");
+        provider.showWeiBoHot();
+    }));
 }
 //该方法将在插件禁用的时候调用（目前是在插件卸载的时候触发）
 function deactivate() {

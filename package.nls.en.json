@@ -4,5 +4,7 @@
     "add.custom.prompting": "Add timing prompting",
     "timing.prompting": "Timing prompting",
     "view.all.prompting": "View all prompting",
-    "close.all.prompting": "Close all prompting"
+    "close.all.prompting": "Close all prompting",
+    "show.moyu.calendar": "View <Moyu> Calendar",
+    "show.weibo.hot": "View Weibo Hot Searches"
 }
